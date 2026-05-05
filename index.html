@@ -1,1 +1,207 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock Identifier AI</title>
 
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+}
+
+/* NAVBAR */
+nav {
+    background: #111827;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    margin-bottom: 10px;
+}
+
+/* CONTAINER */
+.container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* BUTTON */
+button {
+    background: #2a5298;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e3c72;
+}
+
+/* FOOTER */
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 600px){
+    nav {
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="#about">Om</a>
+    <a href="#use">Användning</a>
+    <a href="#analysis">Analys</a>
+    <a href="#proscons">Fördelar</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Rock Identifier AI</h1>
+    <p>Identifiera stenar med hjälp av artificiell intelligens</p>
+    <button onclick="showMessage()">Testa AI-idén</button>
+</section>
+
+<div class="container">
+
+<!-- OM -->
+<section id="about" class="card">
+    <h2>Vad är Rock Identifier?</h2>
+    <p>
+        Rock Identifier är ett AI-verktyg som använder bildigenkänning för att analysera
+        och identifiera olika typer av stenar och mineraler. AI:n jämför din bild med en stor databas.
+    </p>
+</section>
+
+<!-- VEM -->
+<section class="card">
+    <h2>Vem har skapat det?</h2>
+    <p>
+        Verktyget är utvecklat av ett teknikföretag inom AI och machine learning.
+        De tränar modeller på stora mängder bilder för att förbättra träffsäkerheten.
+    </p>
+</section>
+
+<!-- ANVÄNDNING -->
+<section id="use" class="card">
+    <h2>Hur använder man det?</h2>
+    <div class="grid">
+        <div class="card">1. Ta en bild</div>
+        <div class="card">2. Ladda upp</div>
+        <div class="card">3. AI analyserar</div>
+        <div class="card">4. Få resultat</div>
+    </div>
+</section>
+
+<!-- MÅLGRUPP -->
+<section class="card">
+    <h2>Målgrupp</h2>
+    <p>
+        Studenter, geologer, naturintresserade och samlare som vill lära sig mer om stenar.
+    </p>
+</section>
+
+<!-- ANALYS -->
+<section id="analysis" class="card">
+    <h2>Test och analys</h2>
+    <p>
+        När jag testade verktyget fungerade det bra på tydliga bilder.
+        AI:n hade svårare att identifiera stenar när bilden var suddig eller mörk.
+    </p>
+    <p>
+        Detta visar att AI är beroende av datakvalitet och att resultat inte alltid är 100% säkra.
+    </p>
+</section>
+
+<!-- FÖRDELAR & NACKDELAR -->
+<section id="proscons" class="grid">
+
+    <div class="card">
+        <h2>Fördelar</h2>
+        <ul>
+            <li>Snabbt och enkelt</li>
+            <li>Lärorikt</li>
+            <li>Mobilvänligt</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Begränsningar</h2>
+        <ul>
+            <li>Kan ha fel</li>
+            <li>Kräver bra bilder</li>
+            <li>Vissa funktioner kostar</li>
+        </ul>
+    </div>
+
+</section>
+
+<!-- LÄNK -->
+<section class="card">
+    <h2>Testa själv</h2>
+    <a href="https://rockidentifier.com" target="_blank">
+        Gå till Rock Identifier
+    </a>
+</section>
+
+</div>
+
+<footer>
+    <p>Skapad av [Ditt Namn] | AI-kurs</p>
+</footer>
+
+<script>
+function showMessage() {
+    alert("AI analyserar bilder genom att jämföra med tränad data!");
+}
+</script>
+
+</body>
+</html>
