@@ -8,108 +8,116 @@
 <style>
 :root {
     --green: #2ecc71;
-    --dark: #1e2a32;
+    --dark: #1f2a30;
+    --gray: #2c3e50;
 }
 
 body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
-    background: #1e2a32;
+    background: linear-gradient(135deg, #1f2a30, #2c3e50);
     color: white;
 }
 
 /* HERO */
 .hero {
-    background: url("https://images.unsplash.com/photo-1601758003122-58d6c8b6c6c6") center/cover;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
+    padding: 100px 20px 60px;
 }
 
 .hero h1 {
     font-size: 3em;
-    background: rgba(0,0,0,0.6);
-    padding: 10px 20px;
-    border-radius: 10px;
+    color: var(--green);
 }
 
 .hero p {
-    background: rgba(0,0,0,0.5);
-    padding: 10px;
-    border-radius: 10px;
-}
-
-/* TABS */
-.tabs {
-    display: flex;
-    justify-content: center;
-    background: #111;
-}
-
-.tabs button {
-    padding: 15px;
-    border: none;
-    background: none;
-    color: white;
-    cursor: pointer;
-}
-
-.tabs button:hover {
-    background: var(--green);
-}
-
-.tab-content {
-    display: none;
-    padding: 40px;
-    max-width: 1000px;
+    max-width: 600px;
     margin: auto;
+    opacity: 0.85;
 }
 
-.active {
-    display: block;
+/* SECTIONS */
+.section {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 20px;
 }
 
-/* IMAGE GRID */
-.images {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+/* SPLIT LAYOUT */
+.split {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.images img {
+.split img {
     width: 100%;
-    border-radius: 10px;
-    transition: 0.3s;
+    max-width: 400px;
+    border-radius: 15px;
 }
 
-.images img:hover {
-    transform: scale(1.05);
+/* TEXT */
+.text {
+    flex: 1;
+    min-width: 250px;
 }
 
-/* AI FLOW */
-.flow {
+/* TIMELINE (AI flow) */
+.timeline {
+    border-left: 3px solid var(--green);
+    padding-left: 20px;
+}
+
+.step {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.step::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: var(--green);
+    border-radius: 50%;
+    position: absolute;
+    left: -28px;
+    top: 5px;
+}
+
+/* BUBBLES */
+.bubbles {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.step {
-    flex: 1;
-    min-width: 200px;
+.bubble {
     background: rgba(255,255,255,0.05);
     padding: 20px;
-    border-radius: 10px;
-    border-left: 4px solid var(--green);
+    border-radius: 20px;
+    flex: 1;
+    min-width: 250px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+
+.bubble:hover {
+    transform: translateY(-5px);
 }
 
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 20px;
-    background: #111;
+    padding: 30px;
+    background: rgba(0,0,0,0.4);
+}
+
+/* MOBILE */
+@media(max-width:700px){
+    .hero h1 {
+        font-size: 2em;
+    }
 }
 </style>
 </head>
@@ -119,90 +127,114 @@ footer {
 <!-- HERO -->
 <section class="hero">
     <h1>Rock Identifier AI</h1>
-    <p>Identifiera stenar med hjälp av artificiell intelligens</p>
+    <p>
+        Med hjälp av artificiell intelligens kan du identifiera stenar direkt från en bild.
+        En enkel idé – men med avancerad teknik bakom.
+    </p>
 </section>
 
-<!-- TABS -->
-<div class="tabs">
-    <button onclick="openTab('about')">Om</button>
-    <button onclick="openTab('ai')">Hur AI funkar</button>
-    <button onclick="openTab('test')">Test & Analys</button>
-</div>
+<!-- OM + BILD -->
+<section class="section split">
+    <img src="https://images.unsplash.com/photo-1598300053653-3d0c8c68c9c7" alt="Stenar">
+    
+    <div class="text">
+        <h2>Vad är Rock Identifier?</h2>
+        <p>
+            Rock Identifier är ett AI-verktyg som analyserar bilder av stenar och mineraler.
+            Genom att jämföra bilden med en stor databas kan AI:n avgöra vad det är för typ av sten.
+        </p>
 
-<!-- OM -->
-<div id="about" class="tab-content active">
-    <h2>Vad är Rock Identifier?</h2>
-    <p>
-        Rock Identifier är ett AI-verktyg som analyserar bilder av stenar och jämför
-        dem med en databas för att identifiera vad det är.
-    </p>
-
-    <div class="images">
-        <img src="https://images.unsplash.com/photo-1598300053653-3d0c8c68c9c7">
-        <img src="https://images.unsplash.com/photo-1615485737651-6c3c0c1c3e8d">
-        <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb">
+        <p>
+            Det som gör tekniken intressant är hur den använder <b>machine learning</b>
+            för att känna igen mönster, färger och strukturer.
+        </p>
     </div>
-</div>
+</section>
 
-<!-- AI -->
-<div id="ai" class="tab-content">
-    <h2>Hur fungerar AI:n?</h2>
+<!-- HUR DET FUNKAR -->
+<section class="section split">
+    
+    <div class="text">
+        <h2>Hur fungerar AI:n?</h2>
 
-    <div class="flow">
-        <div class="step">
-            <h3>1. Bild</h3>
-            <p>Användaren tar en bild av en sten.</p>
-        </div>
-
-        <div class="step">
-            <h3>2. Analys</h3>
-            <p>AI analyserar färg, form och struktur.</p>
-        </div>
-
-        <div class="step">
-            <h3>3. Jämförelse</h3>
-            <p>Jämförs med tränad data.</p>
-        </div>
-
-        <div class="step">
-            <h3>4. Resultat</h3>
-            <p>Ger ett svar och information.</p>
+        <div class="timeline">
+            <div class="step">
+                <p><b>Bild:</b> Du tar en bild av en sten.</p>
+            </div>
+            <div class="step">
+                <p><b>Analys:</b> AI analyserar färg, form och struktur.</p>
+            </div>
+            <div class="step">
+                <p><b>Jämförelse:</b> Den jämför med tränad data.</p>
+            </div>
+            <div class="step">
+                <p><b>Resultat:</b> Du får ett svar direkt.</p>
+            </div>
         </div>
     </div>
-</div>
+
+    <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb" alt="AI analys">
+</section>
 
 <!-- ANALYS -->
-<div id="test" class="tab-content">
-    <h2>Test & Reflektion</h2>
+<section class="section split">
+    <img src="https://images.unsplash.com/photo-1581091215367-59ab6b56c89c">
 
-    <p>
-        När jag testade verktyget fungerade det bäst med tydliga bilder.
-        Suddiga bilder gav sämre resultat, vilket visar att AI är beroende
-        av bra data.
-    </p>
+    <div class="text">
+        <h2>Analys och reflektion</h2>
 
-    <div class="images">
-        <img src="https://images.unsplash.com/photo-1581091215367-59ab6b56c89c">
-        <img src="https://images.unsplash.com/photo-1526657782461-9fe13402a841">
+        <p>
+            När jag testade verktyget fungerade det bäst med tydliga bilder.
+            Suddiga bilder gav sämre resultat.
+        </p>
+
+        <p>
+            Detta visar att AI är beroende av datakvalitet.
+            Om inputen är dålig blir resultatet också sämre.
+        </p>
+    </div>
+</section>
+
+<!-- FÖRDELAR / NACKDELAR -->
+<section class="section">
+    <h2>Styrkor och begränsningar</h2>
+
+    <div class="bubbles">
+        <div class="bubble">
+            <h3>Fördelar</h3>
+            <p>
+                Verktyget är snabbt, enkelt och gör det möjligt att lära sig mer om stenar på ett roligt sätt.
+            </p>
+        </div>
+
+        <div class="bubble">
+            <h3>Begränsningar</h3>
+            <p>
+                AI:n kan ibland ha fel och kräver bra bilder för att fungera optimalt.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- LÄNK -->
+<section class="section split">
+    <div class="text">
+        <h2>Testa själv</h2>
+        <p>
+            Vill du prova hur AI:n fungerar i praktiken?
+        </p>
+
+        <a href="https://rockidentifier.com" target="_blank" style="color:#2ecc71;">
+            Gå till Rock Identifier →
+        </a>
     </div>
 
-    <p>
-        Detta visar att AI är kraftfull men inte perfekt.
-    </p>
-</div>
+    <img src="https://images.unsplash.com/photo-1526657782461-9fe13402a841">
+</section>
 
 <footer>
     <p>Skapad av [Ditt Namn]</p>
 </footer>
-
-<script>
-function openTab(tabId) {
-    let tabs = document.querySelectorAll(".tab-content");
-    tabs.forEach(tab => tab.style.display = "none");
-
-    document.getElementById(tabId).style.display = "block";
-}
-</script>
 
 </body>
 </html>
