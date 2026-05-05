@@ -8,237 +8,199 @@
 <style>
 :root {
     --green: #2ecc71;
-    --darkgreen: #27ae60;
-    --gray: #2c3e50;
-    --lightgray: #ecf0f1;
+    --dark: #1e2a32;
 }
 
 body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
-    background: linear-gradient(135deg, #2c3e50, #3b4f5c);
+    background: #1e2a32;
     color: white;
-}
-
-/* NAVBAR */
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 15px;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: var(--green);
 }
 
 /* HERO */
 .hero {
+    background: url("https://images.unsplash.com/photo-1601758003122-58d6c8b6c6c6") center/cover;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 100px 20px;
 }
 
 .hero h1 {
     font-size: 3em;
-    color: var(--green);
+    background: rgba(0,0,0,0.6);
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
 .hero p {
-    max-width: 600px;
-    margin: auto;
-    opacity: 0.9;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 10px;
 }
 
-button {
-    margin-top: 20px;
-    background: var(--green);
-    border: none;
-    padding: 12px 20px;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: var(--darkgreen);
-}
-
-/* SECTION */
-.section {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-}
-
-/* FLEX CONTENT */
-.flex {
+/* TABS */
+.tabs {
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+    justify-content: center;
+    background: #111;
 }
 
-.box {
-    flex: 1;
-    min-width: 250px;
-    padding: 20px;
-    background: rgba(0,0,0,0.2);
+.tabs button {
+    padding: 15px;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+}
+
+.tabs button:hover {
+    background: var(--green);
+}
+
+.tab-content {
+    display: none;
+    padding: 40px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.active {
+    display: block;
+}
+
+/* IMAGE GRID */
+.images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.images img {
+    width: 100%;
     border-radius: 10px;
     transition: 0.3s;
 }
 
-.box:hover {
-    transform: translateY(-5px);
-    background: rgba(0,0,0,0.4);
+.images img:hover {
+    transform: scale(1.05);
+}
+
+/* AI FLOW */
+.flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.step {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--green);
 }
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 20px;
-    background: rgba(0,0,0,0.4);
-}
-
-/* SMALL SCREEN */
-@media(max-width:600px){
-    .hero h1 {
-        font-size: 2em;
-    }
+    background: #111;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-    <a href="#about">Om</a>
-    <a href="#use">Användning</a>
-    <a href="#analysis">Analys</a>
-</nav>
-
+<!-- HERO -->
 <section class="hero">
     <h1>Rock Identifier AI</h1>
-    <p>
-        Tänk dig att kunna identifiera vilken sten som helst – direkt från din mobil.
-        Med hjälp av artificiell intelligens gör Rock Identifier just detta möjligt.
-    </p>
-    <button onclick="info()">Hur funkar AI?</button>
+    <p>Identifiera stenar med hjälp av artificiell intelligens</p>
 </section>
 
-<section id="about" class="section">
+<!-- TABS -->
+<div class="tabs">
+    <button onclick="openTab('about')">Om</button>
+    <button onclick="openTab('ai')">Hur AI funkar</button>
+    <button onclick="openTab('test')">Test & Analys</button>
+</div>
+
+<!-- OM -->
+<div id="about" class="tab-content active">
     <h2>Vad är Rock Identifier?</h2>
     <p>
-        Rock Identifier är ett AI-verktyg som använder bildigenkänning för att analysera
-        och identifiera stenar och mineraler. När du laddar upp en bild jämförs den med
-        tusentals andra bilder som AI:n har tränats på.
+        Rock Identifier är ett AI-verktyg som analyserar bilder av stenar och jämför
+        dem med en databas för att identifiera vad det är.
     </p>
+
+    <div class="images">
+        <img src="https://images.unsplash.com/photo-1598300053653-3d0c8c68c9c7">
+        <img src="https://images.unsplash.com/photo-1615485737651-6c3c0c1c3e8d">
+        <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb">
+    </div>
+</div>
+
+<!-- AI -->
+<div id="ai" class="tab-content">
+    <h2>Hur fungerar AI:n?</h2>
+
+    <div class="flow">
+        <div class="step">
+            <h3>1. Bild</h3>
+            <p>Användaren tar en bild av en sten.</p>
+        </div>
+
+        <div class="step">
+            <h3>2. Analys</h3>
+            <p>AI analyserar färg, form och struktur.</p>
+        </div>
+
+        <div class="step">
+            <h3>3. Jämförelse</h3>
+            <p>Jämförs med tränad data.</p>
+        </div>
+
+        <div class="step">
+            <h3>4. Resultat</h3>
+            <p>Ger ett svar och information.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ANALYS -->
+<div id="test" class="tab-content">
+    <h2>Test & Reflektion</h2>
 
     <p>
-        Det som gör verktyget intressant är hur det använder <b>machine learning</b>.
-        AI:n lär sig känna igen mönster, färger och texturer – ungefär som en människa,
-        fast mycket snabbare.
+        När jag testade verktyget fungerade det bäst med tydliga bilder.
+        Suddiga bilder gav sämre resultat, vilket visar att AI är beroende
+        av bra data.
     </p>
-</section>
 
-<section id="use" class="section">
-    <h2>Hur används verktyget?</h2>
-
-    <div class="flex">
-        <div class="box">
-            <h3>Steg 1</h3>
-            <p>Ta en tydlig bild av stenen du vill identifiera.</p>
-        </div>
-
-        <div class="box">
-            <h3>Steg 2</h3>
-            <p>Ladda upp bilden i appen eller på hemsidan.</p>
-        </div>
-
-        <div class="box">
-            <h3>Steg 3</h3>
-            <p>AI:n analyserar och jämför med sin databas.</p>
-        </div>
-
-        <div class="box">
-            <h3>Steg 4</h3>
-            <p>Du får ett resultat med information om stenen.</p>
-        </div>
+    <div class="images">
+        <img src="https://images.unsplash.com/photo-1581091215367-59ab6b56c89c">
+        <img src="https://images.unsplash.com/photo-1526657782461-9fe13402a841">
     </div>
 
     <p>
-        Processen går på bara några sekunder, vilket visar hur kraftfull modern AI kan vara.
+        Detta visar att AI är kraftfull men inte perfekt.
     </p>
-</section>
-
-<section id="analysis" class="section">
-    <h2>Analys och reflektion</h2>
-
-    <p>
-        När jag testade Rock Identifier märkte jag att resultatet var beroende av bildens kvalitet.
-        Tydliga bilder gav ofta rätt svar, medan suddiga bilder kunde ge fel resultat.
-    </p>
-
-    <p>
-        Detta visar en viktig sak om AI: den är bara så bra som den data den får.
-        Om inputen är dålig blir resultatet också sämre.
-    </p>
-
-    <div class="flex">
-        <div class="box">
-            <h3>Fördelar</h3>
-            <p>
-                Verktyget är snabbt, enkelt och gör det möjligt för vem som helst
-                att lära sig mer om geologi.
-            </p>
-        </div>
-
-        <div class="box">
-            <h3>Begränsningar</h3>
-            <p>
-                AI:n kan ha fel och vissa funktioner kräver betalning,
-                vilket kan begränsa användningen.
-            </p>
-        </div>
-    </div>
-
-    <p>
-        Sammanfattningsvis är Rock Identifier ett bra exempel på hur AI kan användas
-        i vardagen, men också att tekniken fortfarande har begränsningar.
-    </p>
-</section>
-
-<section class="section">
-    <h2>Testa själv</h2>
-    <p>
-        Vill du prova verktyget?
-        <br><br>
-        <a href="https://rockidentifier.com" target="_blank" style="color:#2ecc71;">
-            Klicka här för att öppna Rock Identifier
-        </a>
-    </p>
-</section>
+</div>
 
 <footer>
     <p>Skapad av [Ditt Namn]</p>
 </footer>
 
 <script>
-function info() {
-    alert("AI tränas på tusentals bilder för att känna igen mönster och former!");
+function openTab(tabId) {
+    let tabs = document.querySelectorAll(".tab-content");
+    tabs.forEach(tab => tab.style.display = "none");
+
+    document.getElementById(tabId).style.display = "block";
 }
 </script>
 
