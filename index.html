@@ -8,21 +8,22 @@
 <style>
 :root {
     --green: #2ecc71;
-    --dark: #1f2a30;
+    --dark: #1c252b;
     --gray: #2c3e50;
 }
 
 body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
-    background: linear-gradient(135deg, #1f2a30, #2c3e50);
+    background: #1c252b;
     color: white;
 }
 
 /* HERO */
 .hero {
+    background: linear-gradient(135deg, #1c252b, #2c3e50);
     text-align: center;
-    padding: 100px 20px 60px;
+    padding: 100px 20px 140px;
 }
 
 .hero h1 {
@@ -31,19 +32,45 @@ body {
 }
 
 .hero p {
-    max-width: 600px;
-    margin: auto;
     opacity: 0.85;
 }
 
-/* SECTIONS */
+/* FLOATING CARDS */
+.cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: -80px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    color: black;
+    border-radius: 15px;
+    padding: 20px;
+    width: 320px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* SECTION */
 .section {
     max-width: 1000px;
     margin: 60px auto;
     padding: 20px;
 }
 
-/* SPLIT LAYOUT */
+/* SPLIT */
 .split {
     display: flex;
     gap: 40px;
@@ -60,64 +87,29 @@ body {
 /* TEXT */
 .text {
     flex: 1;
-    min-width: 250px;
-}
-
-/* TIMELINE (AI flow) */
-.timeline {
-    border-left: 3px solid var(--green);
-    padding-left: 20px;
-}
-
-.step {
-    margin-bottom: 25px;
-    position: relative;
-}
-
-.step::before {
-    content: "";
-    width: 12px;
-    height: 12px;
-    background: var(--green);
-    border-radius: 50%;
-    position: absolute;
-    left: -28px;
-    top: 5px;
 }
 
 /* BUBBLES */
 .bubbles {
     display: flex;
-    flex-wrap: wrap;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .bubble {
+    flex: 1;
+    min-width: 250px;
     background: rgba(255,255,255,0.05);
     padding: 20px;
     border-radius: 20px;
-    flex: 1;
-    min-width: 250px;
     border: 1px solid rgba(255,255,255,0.1);
-    transition: 0.3s;
-}
-
-.bubble:hover {
-    transform: translateY(-5px);
 }
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 30px;
-    background: rgba(0,0,0,0.4);
-}
-
-/* MOBILE */
-@media(max-width:700px){
-    .hero h1 {
-        font-size: 2em;
-    }
+    background: #111;
 }
 </style>
 </head>
@@ -127,61 +119,57 @@ footer {
 <!-- HERO -->
 <section class="hero">
     <h1>Rock Identifier AI</h1>
-    <p>
-        Med hjälp av artificiell intelligens kan du identifiera stenar direkt från en bild.
-        En enkel idé – men med avancerad teknik bakom.
-    </p>
+    <p>Identifiera stenar direkt med hjälp av artificiell intelligens</p>
 </section>
 
-<!-- OM + BILD -->
-<section class="section split">
-    <img src="https://images.unsplash.com/photo-1598300053653-3d0c8c68c9c7" alt="Stenar">
-    
-    <div class="text">
-        <h2>Vad är Rock Identifier?</h2>
+<!-- FLOATING CARDS -->
+<div class="cards">
+
+    <div class="card">
+        <h3>Om verktyget</h3>
+        <img src="https://images.unsplash.com/photo-1598300053653-3d0c8c68c9c7">
         <p>
-            Rock Identifier är ett AI-verktyg som analyserar bilder av stenar och mineraler.
-            Genom att jämföra bilden med en stor databas kan AI:n avgöra vad det är för typ av sten.
+            Rock Identifier använder AI för att analysera bilder av stenar
+            och matcha dem med en databas.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Hur det fungerar</h3>
+        <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb">
+        <p>
+            AI:n analyserar mönster, färg och struktur och jämför med tidigare data.
+        </p>
+    </div>
+
+</div>
+
+<!-- INFO SECTION -->
+<section class="section split">
+
+    <div class="text">
+        <h2>Tekniken bakom</h2>
+        <p>
+            Verktyget använder machine learning för att känna igen mönster i bilder.
+            Genom att tränas på tusentals exempel lär sig AI:n att identifiera olika typer av stenar.
         </p>
 
         <p>
-            Det som gör tekniken intressant är hur den använder <b>machine learning</b>
-            för att känna igen mönster, färger och strukturer.
+            Detta gör att processen går snabbt och ger ett resultat på bara några sekunder.
         </p>
     </div>
-</section>
 
-<!-- HUR DET FUNKAR -->
-<section class="section split">
-    
-    <div class="text">
-        <h2>Hur fungerar AI:n?</h2>
+    <img src="https://images.unsplash.com/photo-1526657782461-9fe13402a841">
 
-        <div class="timeline">
-            <div class="step">
-                <p><b>Bild:</b> Du tar en bild av en sten.</p>
-            </div>
-            <div class="step">
-                <p><b>Analys:</b> AI analyserar färg, form och struktur.</p>
-            </div>
-            <div class="step">
-                <p><b>Jämförelse:</b> Den jämför med tränad data.</p>
-            </div>
-            <div class="step">
-                <p><b>Resultat:</b> Du får ett svar direkt.</p>
-            </div>
-        </div>
-    </div>
-
-    <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb" alt="AI analys">
 </section>
 
 <!-- ANALYS -->
 <section class="section split">
+
     <img src="https://images.unsplash.com/photo-1581091215367-59ab6b56c89c">
 
     <div class="text">
-        <h2>Analys och reflektion</h2>
+        <h2>Analys & Reflektion</h2>
 
         <p>
             När jag testade verktyget fungerade det bäst med tydliga bilder.
@@ -189,47 +177,47 @@ footer {
         </p>
 
         <p>
-            Detta visar att AI är beroende av datakvalitet.
-            Om inputen är dålig blir resultatet också sämre.
+            Detta visar att AI är beroende av datakvalitet och inte alltid är 100% korrekt.
         </p>
     </div>
+
 </section>
 
-<!-- FÖRDELAR / NACKDELAR -->
+<!-- PROS CONS -->
 <section class="section">
-    <h2>Styrkor och begränsningar</h2>
+    <h2>Styrkor & Begränsningar</h2>
 
     <div class="bubbles">
         <div class="bubble">
             <h3>Fördelar</h3>
             <p>
-                Verktyget är snabbt, enkelt och gör det möjligt att lära sig mer om stenar på ett roligt sätt.
+                Snabbt, enkelt och lärorikt. Perfekt för både studenter och hobbyintresserade.
             </p>
         </div>
 
         <div class="bubble">
             <h3>Begränsningar</h3>
             <p>
-                AI:n kan ibland ha fel och kräver bra bilder för att fungera optimalt.
+                Kräver bra bildkvalitet och kan ibland ge fel resultat.
             </p>
         </div>
     </div>
 </section>
 
-<!-- LÄNK -->
+<!-- CTA -->
 <section class="section split">
+
     <div class="text">
         <h2>Testa själv</h2>
-        <p>
-            Vill du prova hur AI:n fungerar i praktiken?
-        </p>
+        <p>Prova AI-verktyget direkt:</p>
 
         <a href="https://rockidentifier.com" target="_blank" style="color:#2ecc71;">
             Gå till Rock Identifier →
         </a>
     </div>
 
-    <img src="https://images.unsplash.com/photo-1526657782461-9fe13402a841">
+    <img src="https://images.unsplash.com/photo-1601758123927-196f0b1c1c74">
+
 </section>
 
 <footer>
